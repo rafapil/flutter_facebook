@@ -145,5 +145,11 @@ UI baseada no feed do Facebook. Projeto de estudo para praticar:
 - Composição de widgets em arquivos barrel (`*.dart` exportando filhos)
 - Theming centralizado em uma `Palette`
 
+# Imagens
+
+![](https://raw.githubusercontent.com/rafapil/Imagens/master/rafabook_001.png)
+![](https://raw.githubusercontent.com/rafapil/Imagens/master/rafabook_002.png)
+![](https://raw.githubusercontent.com/rafapil/Imagens/master/rafabook_003.png)
+
 ---
 
