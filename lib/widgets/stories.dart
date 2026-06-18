@@ -4,25 +4,19 @@ import 'package:flutter_facebook_responsive_ui/config/palette.dart';
 import 'package:flutter_facebook_responsive_ui/models/models.dart';
 import 'package:flutter_facebook_responsive_ui/widgets/profile_avatar.dart';
 
+// TODO: Review for latest Flutter version compatibility
 class Stories extends StatelessWidget {
   final User currentUser;
   final List<Story> stories;
 
-  const Stories({
-    Key key,
-    @required this.currentUser,
-    @required this.stories,
-  }) : super(key: key);
+  const Stories({super.key, required this.currentUser, required this.stories});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 200,
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 8,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 1 + stories.length,
@@ -30,16 +24,14 @@ class Stories extends StatelessWidget {
           if (index == 0) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: _StoryCard(
-                isAddStory: true,
-                currentUser: currentUser,
-              ),
+              child: _StoryCard(isAddStory: true, currentUser: currentUser),
             );
           }
           final Story story = stories[index - 1];
           return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: _StoryCard(story: story));
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: _StoryCard(story: story),
+          );
         },
       ),
     );
@@ -48,15 +40,14 @@ class Stories extends StatelessWidget {
 
 class _StoryCard extends StatelessWidget {
   final bool isAddStory;
-  final User currentUser;
-  final Story story;
+  final User? currentUser;
+  final Story? story;
 
   const _StoryCard({
-    Key key,
     this.isAddStory = false,
     this.currentUser,
     this.story,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +57,7 @@ class _StoryCard extends StatelessWidget {
           // this ClipRRect create a border curve in card
           borderRadius: BorderRadius.circular(12.0),
           child: CachedNetworkImage(
-            imageUrl: isAddStory ? currentUser.imageUrl : story.imageUrl,
+            imageUrl: isAddStory ? currentUser!.imageUrl : story!.imageUrl,
             height: double.infinity,
             width: 110,
             fit: BoxFit.cover,
@@ -82,40 +73,42 @@ class _StoryCard extends StatelessWidget {
           ),
         ),
         Positioned(
-            top: 8,
-            left: 8,
-            child: isAddStory
-                ? Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      icon: const Icon(Icons.add),
-                      iconSize: 30,
-                      color: Palette.facebookBlue,
-                      onPressed: () {},
-                    ),
-                  )
-                : ProfileAvatar(
-                    imageUrl: story.user.imageUrl,
-                    hasBorder: !story.isViewed,
-                  )),
+          top: 8,
+          left: 8,
+          child: isAddStory
+              ? Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(Icons.add),
+                    iconSize: 30,
+                    color: Palette.facebookBlue,
+                    onPressed: () {},
+                  ),
+                )
+              : ProfileAvatar(
+                  imageUrl: story!.user.imageUrl,
+                  hasBorder: !story!.isViewed,
+                ),
+        ),
         Positioned(
-            bottom: 8,
-            left: 8,
-            child: Text(
-              isAddStory ? 'Add Historia' : story.user.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            )),
+          bottom: 8,
+          left: 8,
+          child: Text(
+            isAddStory ? 'Add Historia' : story!.user.name,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }

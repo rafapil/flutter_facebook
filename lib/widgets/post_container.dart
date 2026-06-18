@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_responsive_ui/config/palette.dart';
 import 'package:flutter_facebook_responsive_ui/models/models.dart';
 import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+// TODO: Review for latest Flutter version compatibility
 class PostContainer extends StatelessWidget {
   final Post post;
 
-  const PostContainer({
-    Key key,
-    this.post,
-  }) : super(key: key);
+  const PostContainer({super.key, required this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +36,13 @@ class PostContainer extends StatelessWidget {
           post.imageUrl != null
               ? Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: CachedNetworkImage(imageUrl: post.imageUrl),
+                  child: CachedNetworkImage(imageUrl: post.imageUrl!),
                 )
               : const SizedBox.shrink(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: _PostStats(post: post),
-          )
+          ),
         ],
       ),
     );
@@ -55,52 +52,35 @@ class PostContainer extends StatelessWidget {
 class _PostHeader extends StatelessWidget {
   final Post post;
 
-  const _PostHeader({
-    Key key,
-    @required this.post,
-  }) : super(key: key);
+  const _PostHeader({required this.post});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         ProfileAvatar(imageUrl: post.user.imageUrl),
-        const SizedBox(
-          width: 8,
-        ),
+        const SizedBox(width: 8),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 post.user.name,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
+                style: const TextStyle(fontWeight: FontWeight.w600),
               ),
               Row(
                 children: [
                   Text(
                     '${post.timeAgo} ∙ ',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 12,
-                    ),
+                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
                   ),
-                  Icon(
-                    Icons.public,
-                    color: Colors.grey[600],
-                    size: 12,
-                  )
+                  Icon(Icons.public, color: Colors.grey[600], size: 12),
                 ],
               ),
             ],
           ),
         ),
-        IconButton(
-          icon: const Icon(Icons.more_horiz),
-          onPressed: () {},
-        )
+        IconButton(icon: const Icon(Icons.more_horiz), onPressed: () {}),
       ],
     );
   }
@@ -109,10 +89,7 @@ class _PostHeader extends StatelessWidget {
 class _PostStats extends StatelessWidget {
   final Post post;
 
-  const _PostStats({
-    Key key,
-    @required this.post,
-  }) : super(key: key);
+  const _PostStats({required this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -136,23 +113,17 @@ class _PostStats extends StatelessWidget {
             Expanded(
               child: Text(
                 '${post.likes}',
-                style: TextStyle(
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(color: Colors.grey[600]),
               ),
             ),
             Text(
               '${post.comments} Comentários',
-              style: TextStyle(
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(color: Colors.grey[600]),
             ),
             const SizedBox(width: 8),
             Text(
               '${post.shares} Shares',
-              style: TextStyle(
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(color: Colors.grey[600]),
             ),
           ],
         ),
@@ -161,7 +132,7 @@ class _PostStats extends StatelessWidget {
           children: [
             _PostButton(
               icon: Icon(
-                MdiIcons.thumbUpOutline,
+                Icons.thumb_up_outlined,
                 color: Colors.grey[600],
                 size: 20,
               ),
@@ -169,17 +140,13 @@ class _PostStats extends StatelessWidget {
               onTap: () {},
             ),
             _PostButton(
-              icon: Icon(
-                MdiIcons.comment,
-                color: Colors.grey[600],
-                size: 20,
-              ),
+              icon: Icon(Icons.comment_outlined, color: Colors.grey[600], size: 20),
               label: 'Comentar',
               onTap: () {},
             ),
             _PostButton(
               icon: Icon(
-                MdiIcons.shareOutline,
+                Icons.share_outlined,
                 color: Colors.grey[600],
                 size: 25,
               ),
@@ -187,7 +154,7 @@ class _PostStats extends StatelessWidget {
               onTap: () {},
             ),
           ],
-        )
+        ),
       ],
     );
   }
@@ -196,14 +163,13 @@ class _PostStats extends StatelessWidget {
 class _PostButton extends StatelessWidget {
   final Icon icon;
   final String label;
-  final Function onTap;
+  final VoidCallback onTap;
 
   const _PostButton({
-    Key key,
-    @required this.icon,
-    @required this.label,
-    @required this.onTap,
-  }) : super(key: key);
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -217,11 +183,7 @@ class _PostButton extends StatelessWidget {
             height: 25,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                icon,
-                const SizedBox(width: 4),
-                Text(label),
-              ],
+              children: [icon, const SizedBox(width: 4), Text(label)],
             ),
           ),
         ),

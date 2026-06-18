@@ -43,9 +43,10 @@ final List<User> onlineUsers = [
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
   ),
   User(
-      name: 'Thais Silva',
-      imageUrl:
-          'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80'),
+    name: 'Thais Silva',
+    imageUrl:
+        'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
+  ),
   User(
     name: 'James Maicon',
     imageUrl:
@@ -92,9 +93,10 @@ final List<User> onlineUsers = [
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
   ),
   User(
-      name: 'Eliza',
-      imageUrl:
-          'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80'),
+    name: 'Eliza',
+    imageUrl:
+        'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
+  ),
   User(
     name: 'James Kaue',
     imageUrl:
@@ -223,5 +225,5 @@ final List<Post> posts = [
     likes: 1523,
     shares: 129,
     comments: 301,
-  )
+  ),
 ];

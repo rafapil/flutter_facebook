@@ -1,15 +1,12 @@
-// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_responsive_ui/models/user_model.dart';
+import 'package:flutter_facebook_responsive_ui/models/models.dart';
 import 'package:flutter_facebook_responsive_ui/widgets/profile_avatar.dart';
 
+// TODO: Review for latest Flutter version compatibility
 class CreatePostContainer extends StatelessWidget {
   final User currentUser;
 
-  const CreatePostContainer({
-    Key key,
-    this.currentUser,
-  }) : super(key: key);
+  const CreatePostContainer({super.key, required this.currentUser});
 
   @override
   Widget build(BuildContext context) {
@@ -29,53 +26,42 @@ class CreatePostContainer extends StatelessWidget {
               //   backgroundImage:
               //       CachedNetworkImageProvider(currentUser.imageUrl),
               // ),
-              const SizedBox(
-                width: 8,
-              ),
+              const SizedBox(width: 8),
               Expanded(
                 child: TextField(
                   decoration: InputDecoration.collapsed(
-                      hintText: 'O que você pretende hoje?'),
+                    hintText: 'O que você pretende hoje?',
+                  ),
                 ),
               ),
             ],
           ),
-          const Divider(
-            height: 10,
-            thickness: 0.5,
-          ),
-          Container(
+          const Divider(height: 10, thickness: 0.5),
+          SizedBox(
             height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                FlatButton.icon(
+                TextButton.icon(
                   onPressed: () {},
-                  icon: Icon(
-                    Icons.videocam,
-                    color: Colors.red,
-                  ),
-                  label: Text('Live'),
+                  icon: const Icon(Icons.videocam, color: Colors.red),
+                  label: const Text('Live'),
                 ),
-                const VerticalDivider(
-                  width: 8,
-                ),
-                FlatButton.icon(
+                const VerticalDivider(width: 8),
+                TextButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.photo_library, color: Colors.green),
-                  label: Text('Foto'),
+                  icon: const Icon(Icons.photo_library, color: Colors.green),
+                  label: const Text('Foto'),
                 ),
-                const VerticalDivider(
-                  width: 8,
-                ),
-                FlatButton.icon(
+                const VerticalDivider(width: 8),
+                TextButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.video_call, color: Colors.purpleAccent),
-                  label: Text('Sala'),
+                  icon: const Icon(Icons.video_call, color: Colors.purpleAccent),
+                  label: const Text('Sala'),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

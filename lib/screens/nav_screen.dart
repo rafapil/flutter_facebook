@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_responsive_ui/screens/home_screen.dart';
 import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+// TODO: Review for latest Flutter version compatibility
 class NavScreen extends StatefulWidget {
+  const NavScreen({super.key});
+
   @override
-  _NavScreenState createState() => _NavScreenState();
+  NavScreenState createState() => NavScreenState();
 }
 
-class _NavScreenState extends State<NavScreen> {
-  final List<Widget> _screen = [
+class NavScreenState extends State<NavScreen> {
+  final List<Widget> _screen = const [
     HomeScreen(),
     Scaffold(),
     Scaffold(),
@@ -18,12 +20,12 @@ class _NavScreenState extends State<NavScreen> {
     Scaffold(),
   ];
 
-  final List<IconData> _icons = const [
+  final List<IconData> _icons = [
     Icons.home,
     Icons.ondemand_video,
-    MdiIcons.accountCircleOutline,
-    MdiIcons.accountGroupOutline,
-    MdiIcons.bellOffOutline,
+    Icons.person_outline,
+    Icons.people_outline,
+    Icons.notifications_none,
     Icons.menu,
   ];
 

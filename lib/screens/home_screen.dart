@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_facebook_responsive_ui/config/palette.dart';
 import 'package:flutter_facebook_responsive_ui/data/data.dart';
 import 'package:flutter_facebook_responsive_ui/models/models.dart';
 import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+// TODO: Review for latest Flutter version compatibility
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            brightness: Brightness.light,
+            systemOverlayStyle: SystemUiOverlayStyle.dark,
             backgroundColor: Colors.white,
-            title: Text('Rafabook',
-                style: const TextStyle(
-                  color: Palette.facebookBlue,
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -1.2,
-                )),
+            title: Text(
+              'Rafabook',
+              style: const TextStyle(
+                color: Palette.facebookBlue,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                letterSpacing: -1.2,
+              ),
+            ),
             centerTitle: false,
             floating: true,
             actions: [
@@ -34,16 +39,12 @@ class HomeScreen extends StatelessWidget {
               //       color: Colors.black,
               //       onPressed: () {}),
               // ),
+              CircleButton(icon: Icons.search, iconSize: 30, onPressed: () {}),
               CircleButton(
-                icon: Icons.search,
+                icon: Icons.messenger_outline,
                 iconSize: 30,
                 onPressed: () {},
               ),
-              CircleButton(
-                icon: MdiIcons.facebookMessenger,
-                iconSize: 30,
-                onPressed: () {},
-              )
             ],
           ),
           SliverToBoxAdapter(
@@ -51,11 +52,7 @@ class HomeScreen extends StatelessWidget {
           ),
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
-            sliver: SliverToBoxAdapter(
-              child: Rooms(
-                onLineUser: onlineUsers,
-              ),
-            ),
+            sliver: SliverToBoxAdapter(child: Rooms(onLineUser: onlineUsers)),
           ),
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -64,13 +61,11 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SliverList(
-              delegate: SliverChildBuilderDelegate(
-            (context, index) {
+            delegate: SliverChildBuilderDelegate((context, index) {
               final Post post = posts[index];
               return PostContainer(post: post);
-            },
-            childCount: posts.length,
-          ))
+            }, childCount: posts.length),
+          ),
 
           // ),
         ],

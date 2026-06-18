@@ -2,17 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_responsive_ui/config/palette.dart';
 
+// TODO: Review for latest Flutter version compatibility
 class ProfileAvatar extends StatelessWidget {
   final String imageUrl;
   final bool isActive;
   final bool hasBorder;
 
   const ProfileAvatar({
-    Key key,
-    @required this.imageUrl,
+    super.key,
+    required this.imageUrl,
     this.isActive = false,
     this.hasBorder = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +38,13 @@ class ProfileAvatar extends StatelessWidget {
                   height: 15.0,
                   width: 15.0,
                   decoration: BoxDecoration(
-                      color: Palette.online,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        width: 2.0,
-                        color: Colors.white,
-                      )),
+                    color: Palette.online,
+                    shape: BoxShape.circle,
+                    border: Border.all(width: 2.0, color: Colors.white),
+                  ),
                 ),
               )
-            : const SizedBox.shrink()
+            : const SizedBox.shrink(),
       ],
     );
   }
